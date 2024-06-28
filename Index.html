@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyber Threat Predictive Analytics</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Cyber Threat Predictive Analytics</h2>
+        <form id="prediction-form">
+            <!-- Add form fields for input data here -->
+            <div class="form-group">
+                <label for="feature1">Feature 1:</label>
+                <input type="text" id="feature1" name="feature1">
+            </div>
+            <!-- Repeat for all input features -->
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $('#prediction-form').on('submit', function(event) {
+                event.preventDefault();
+                var formData = $(this).serializeArray().reduce(function(obj, item) {
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+                $.ajax({
+                    url: '/predict',
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        $('#result').html('<p>Prediction: ' + response.prediction + '</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
