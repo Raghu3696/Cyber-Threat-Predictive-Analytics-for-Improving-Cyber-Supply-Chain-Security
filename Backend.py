@@ -31,7 +31,7 @@ model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 
-
+#show predictions
 print(classification_report(y_test, y_pred))
 print(confusion_matrix(y_test, y_pred))
 
@@ -39,3 +39,4 @@ print(confusion_matrix(y_test, y_pred))
 feature_importances = pd.Series(model.feature_importances_, index=X.columns)
 feature_importances.nlargest(10).plot(kind='barh')
 plt.show()
+
