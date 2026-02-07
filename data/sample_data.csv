@@ -1,0 +1,6 @@
+timestamp,threat_type,risk_score,supplier_id
+2024-01-01,malware,0.72,SUP001
+2024-01-02,phishing,0.45,SUP002
+2024-01-03,ransomware,0.88,SUP003
+2024-01-04,ddos,0.60,SUP004
+2024-01-05,malware,0.30,SUP005
